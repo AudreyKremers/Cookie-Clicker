@@ -41,7 +41,7 @@
 
 		function changePrixMulti(){
 				prix = prix * multiplicateur;
-				var messagePrix = "Prix : $" + prix;
+				var messagePrix = "Prix : " + prix+" cookies";
 				multiPrix.innerHTML = messagePrix;
 				console.log(prix);
 			}
