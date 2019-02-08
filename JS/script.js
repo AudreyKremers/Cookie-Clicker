@@ -6,23 +6,47 @@
 		var autoclicker = document.querySelector("#autoclicker");
 		var clicker = document.querySelector("#click");
 		var scorer = document.querySelector("#score");
-		//console.log("valueClick = "+valueClick+" multiplicateur = "+multiplicateur+" autoclicker = "+autoclicker);
+		var valueCliquer = document.querySelector("#clickValue span");
+		var multicompter = document.querySelector("#multicompte");
+
+		console.log("valueClick = "+valueClick+" multiplicateur = "+multiplicateur+" autoclicker = "+autoclicker+"multicompter ="+multicompter);
 
 /* partie 3*/
 
 	//fonction qui affiche le score dans le html
 
 		function afficheScore(){ 
-			scorer.innerHTML = score;
+				scorer.innerHTML = score;
 			}
 
+	//fonction qui affiche la valeur du clic en dessous du score dans le html
 
-/* partie 4, 5, 6, 7 */
+		function afficheValueClick(){ 
+				valueCliquer.innerHTML = valueClick;
+			}
 
-	//fonction pour ajouter des valeurs de clique au bouton #click
+/* partie 4, 5, 6, 7, 8 */
 
-		function augmenterMultiplicateur(multiplicateur){
-				valueClick = valueClick + multiplicateur;
+	//fonction pour ajouter des valeurs de clique au bouton #click et augmente la valeur de multiplicateur
+
+		function augmenterMultiplicateur(){
+					if(multiplicateur===1){
+						multiplicateur = multiplicateur + 1;
+					}
+					else{
+						multiplicateur = multiplicateur * multiplicateur;
+					}
+			}
+
+	//fonction pour ajouter des valeurs de clique au bouton #click et incremente la valeur de multiplicateur
+
+		function augmenterValueClick(){
+				if(valueClick===1){
+					valueClick = valueClick + multiplicateur;
+				}
+				else{
+					valueClick = valueClick * multiplicateur;
+					}
 			}
 	
 	//fonction pour désactiver un bouton avec l'attribut disabled
@@ -34,7 +58,7 @@
 					autoclicker.removeAttribute("disabled");
 				}
 
-				else if(score>=50){
+				else if(score>=5){
 					multiplier.removeAttribute("disabled");	
 				}
 				
@@ -45,20 +69,45 @@
 
 			}
 
+	//fonction qui modifie le texte du span#multicompte du btn multiplier dependant de var multiplicateur
+	//le prochain clic sur le bouton multiplier donnera x clic en plus pour augmenter le score
+
+		function afficheMultiTxt(){
+				console.log("devrait modifier le texte");
+				var multexter = "+ "+ (multiplicateur+1) +" par clic";
+				console.log(multexter);
+				multicompter.innerHTML=multexter;
+			}
+
 	//désactive les btn quand score pas assez élevé au début
+
 		disabler();
 
+	//initialise le text du premier bouton multiplier
+
+		afficheMultiTxt();
+
+	//initialise le texte d'affichage de la valeur du clic
+
+		afficheValueClick();
+
 	//lors du clic sur le btn, changer la valeur du clic et payer 50 de score, 
-	//afficher le score, désactiver le btn si score trop peu élevé
+	//afficher le score, désactiver le btn si score trop peu élevé, modifie le texte dans le btn
+	//affiche la nouvelle valeur du clic
+
 		multiplier.addEventListener("click", function() {
-			   score = score - 50 ;
+			   score = score - 5 ;
 			   afficheScore();
 			   disabler();
-			   augmenterMultiplicateur(multiplicateur);
+			   augmenterMultiplicateur();
+			   augmenterValueClick();
+			   afficheMultiTxt();
+			   afficheValueClick();
 			});
 
 
-	//lors du click sur le bouton click :
+	//lors du click sur le bouton click : change le score, l'affiche et check la possibilité d'activer ou non les autres btn
+
 		clicker.addEventListener("click", function() { 
 			   score = score + valueClick; 
 			   afficheScore(); 
