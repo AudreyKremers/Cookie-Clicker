@@ -1,24 +1,124 @@
-/*Header**/
+* {
+  box-sizing: border-box;
+}
+/*Html, body*/
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+/*Fin Html, Body*/
+
+/*Body*/
+body {
+  background-image: linear-gradient(to right, #F2D272, #FFFFC7, #F2D272, #FFFFC7, #F2D272, #FFFFC7, #F2D272, #F2D272, #FFFFC7, #F2D272, #FFFFC7, #F2D272, #FFFFC7, #F2D272);
+  text-align: center;
+  font-family: 'Bangers'; Impact; sans-sérif;
+  font-size: 18px;
+  color: #414552;
+}
+/*Fin Body*/
+
+/*Header*/
 header {
 
 }
-/*Fin Header**/
+/*Fin Header*/
 
-/*Section Cookie **/
-#cookie {
-
+/*Main*/
+main {
+  height: 100%;
 }
-/*Fin Section Cookie **/
+/*Fin Main*/
+
+/*Section Cookie */
+#cookie {
+  height: auto;
+  float: left;
+  width: 50%;
+  clear: inherit;
+}
+/*Fin Section Cookie */
+
+/*Div Affichage*/
+#affichage {
+  display: inline-block;
+  margin: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 10px;
+  background-color: #414552;
+  color: #FFFFC7;
+  font-size: 22px;
+}
+/*Fin Div Affichage*/
+
+/*Span*/
+span {
+  display: block;
+  padding: 10px;
+}
+/* Fin Span*/
 
 /* Section Shop**/
 #shop {
-
+  height: 100%;
+  max-height: 100%;
+  overflow: auto; zoom:1;
+  background-image: url("C:/Users/User/Desktop/Becode/Projet/Cookie-Clicker/IMG/flying-dollars.png");
+  background-position: center;
+  background-color: #40735B;
 }
 /*Fin Section Shop**/
 
-/* Footer**/
+/*Button*/
+button {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 250px;
+  padding: 10px;
+  letter-spacing: 1px;
+  line-height: 40px;
+  font-family: 'Bangers'; Impact; sans-sérif;
+  font-size: 24px;
+  color: #FFFFC7;
+  background-color: #793E30;
+  border-radius: 40px;
+  box-shadow: 0 7px #414552;
+  cursor: crosshair;
+  outline: none;
+}
+
+button:active {
+  background-color: #5E3025;
+  box-shadow: 0 4px #414552;
+  transform: translateY(4px);
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#a {
+  margin-left: -400px;
+  margin-top: 100px;
+}
+
+#click {
+  padding: 0px;
+  margin: 0px;
+  width: 0px;
+  height: 0px;
+  border-radius: 200px;
+  border-style: 1px solide black;
+  border-width: 0px;
+}
+/*Fin Button*/
+
+/* Footer*/
 footer {
 
 }
-
-/*Fin Footer**/
+/*Fin Footer*/
