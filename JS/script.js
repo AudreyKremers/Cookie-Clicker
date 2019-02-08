@@ -1,6 +1,6 @@
 (function(){
 		var score = 0;
-		var valueClick = 1;
+		//var valueClick = 1;
 		var multiplicateur = 1;
 		var prix = 50;
 		var scorer = document.querySelector("#score");
@@ -25,7 +25,7 @@
 	//fonction qui affiche la valeur du clic en dessous du score dans le html
 
 		function afficheValueClick(){ 
-				valueCliquer.innerHTML = valueClick;
+				valueCliquer.innerHTML = multiplicateur;
 			}
 
 /* partie 4, 5, 6, 7, 8 */
@@ -36,11 +36,6 @@
 				multiplicateur = multiplicateur + 1;
 			}
 
-	//fonction pour ajouter des valeurs de clic en fonction du multiplicateur
-
-		function augmenterValueClick(){
-				valueClick = valueClick + multiplicateur;
-			}
 
 	//fonction qui change le prix pour le doubler au suivant clic sur multiplier et affiche le prix
 
@@ -110,7 +105,6 @@
 			   afficheScore();
 			   disablerMulti();
 			   augmenterMultiplicateur();
-			   augmenterValueClick();
 			   afficheMultiTxt();
 			   afficheValueClick();
 			   changePrixMulti();
@@ -120,7 +114,7 @@
 	//lors du click sur le bouton click : change le score, l'affiche et check la possibilité d'activer ou non les autres btn
 
 		clicker.addEventListener("click", function() { 
-			   score = score + valueClick; 
+			   score = score + multiplicateur; 
 			   afficheScore(); 
 			   disablerMulti();
 			   disablerAuto();
