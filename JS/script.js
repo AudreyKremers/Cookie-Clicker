@@ -92,6 +92,10 @@
 
 		afficheMultiTxt();
 
+	//initialise le prix du premier bouton multiplier
+
+		changePrixMulti();
+
 	//initialise le texte d'affichage de la valeur du clic
 
 		afficheValueClick();
