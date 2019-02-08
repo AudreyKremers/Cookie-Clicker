@@ -51,24 +51,33 @@
 				console.log(prix);
 			}
 	
-	//fonction pour désactiver un bouton avec l'attribut disabled
+	//fonction pour désactiver un bouton multiplier avec l'attribut disabled
 
-		function disabler(){
+		function disablerMulti(){
+
+				if(score>prix){
+					console.log("score plus grand que prix");
+					multiplier.removeAttribute("disabled");	
+				}
+				
+				else{
+					multiplier.setAttribute("disabled","true");				
+				}
+
+			}
+
+	//fonction pour désactiver un bouton autoclick avec l'attribut disabled
+
+		function disablerAuto(){
 
 				if(score>=200 && score<=500){
 					console.log("score entre 200 et 500");
 					autoclicker.removeAttribute("disabled");
 				}
 
-				else if(score>=prix){
-					multiplier.removeAttribute("disabled");	
-				}
-				
 				else{
-					multiplier.setAttribute("disabled","true");
 					autoclicker.setAttribute("disabled","true");				
 				}
-
 			}
 
 	//fonction qui modifie le texte du span#multicompte du btn multiplier dependant de var multiplicateur
@@ -81,7 +90,8 @@
 
 	//désactive les btn quand score pas assez élevé au début
 
-		disabler();
+		disablerMulti();
+		disablerAuto();
 
 	//initialise le text du premier bouton multiplier
 
@@ -98,7 +108,7 @@
 		multiplier.addEventListener("click", function() {
 			   score = score - prix ;
 			   afficheScore();
-			   disabler();
+			   disablerMulti();
 			   augmenterMultiplicateur();
 			   augmenterValueClick();
 			   afficheMultiTxt();
@@ -112,7 +122,8 @@
 		clicker.addEventListener("click", function() { 
 			   score = score + valueClick; 
 			   afficheScore(); 
-			   disabler();
+			   disablerMulti();
+			   disablerAuto();
 			})
 
 /* partie */
