@@ -2,14 +2,17 @@
 		var score = 0;
 		var valueClick = 1;
 		var multiplicateur = 1;
-		var multiplier = document.querySelector("#multiplier");
-		var autoclicker = document.querySelector("#autoclicker");
-		var clicker = document.querySelector("#click");
+		var prix = 50;
 		var scorer = document.querySelector("#score");
+		var clicker = document.querySelector("#click");
 		var valueCliquer = document.querySelector("#clickValue span");
+		var multiplier = document.querySelector("#multiplier");
 		var multicompter = document.querySelector("#multicompte");
+		var multiPrix = document.querySelector("#multiplier .prix");
+		var autoclicker = document.querySelector("#autoclicker");
 
-		console.log("valueClick = "+valueClick+" multiplicateur = "+multiplicateur+" autoclicker = "+autoclicker+"multicompter ="+multicompter);
+		/*console.log("valueClick = "+valueClick+" multiplicateur = "+
+			multiplicateur+" autoclicker = "+autoclicker+"multicompter ="+multicompter);*/
 
 /* partie 3*/
 
@@ -27,26 +30,25 @@
 
 /* partie 4, 5, 6, 7, 8 */
 
-	//fonction pour ajouter des valeurs de clique au bouton #click et augmente la valeur de multiplicateur
+	//fonction pour augmenter la valeur de multiplicateur
 
 		function augmenterMultiplicateur(){
-					if(multiplicateur===1){
-						multiplicateur = multiplicateur + 1;
-					}
-					else{
-						multiplicateur = multiplicateur * multiplicateur;
-					}
+				multiplicateur = multiplicateur + 1;
 			}
 
-	//fonction pour ajouter des valeurs de clique au bouton #click et incremente la valeur de multiplicateur
+	//fonction pour ajouter des valeurs de clic en fonction du multiplicateur
 
 		function augmenterValueClick(){
-				if(valueClick===1){
-					valueClick = valueClick + multiplicateur;
-				}
-				else{
-					valueClick = valueClick * multiplicateur;
-					}
+				valueClick = valueClick + multiplicateur;
+			}
+
+	//fonction qui change le prix pour le doubler au suivant clic sur multiplier et affiche le prix
+
+		function changePrixMulti(){
+				prix = prix * multiplicateur;
+				var messagePrix = "Prix : $" + prix;
+				multiPrix.innerHTML = messagePrix;
+				console.log(prix);
 			}
 	
 	//fonction pour désactiver un bouton avec l'attribut disabled
@@ -58,7 +60,7 @@
 					autoclicker.removeAttribute("disabled");
 				}
 
-				else if(score>=5){
+				else if(score>=prix){
 					multiplier.removeAttribute("disabled");	
 				}
 				
@@ -73,9 +75,7 @@
 	//le prochain clic sur le bouton multiplier donnera x clic en plus pour augmenter le score
 
 		function afficheMultiTxt(){
-				console.log("devrait modifier le texte");
 				var multexter = "+ "+ (multiplicateur+1) +" par clic";
-				console.log(multexter);
 				multicompter.innerHTML=multexter;
 			}
 
@@ -93,16 +93,17 @@
 
 	//lors du clic sur le btn, changer la valeur du clic et payer 50 de score, 
 	//afficher le score, désactiver le btn si score trop peu élevé, modifie le texte dans le btn
-	//affiche la nouvelle valeur du clic
+	//affiche la nouvelle valeur du clic change le prix du bouton suivant
 
 		multiplier.addEventListener("click", function() {
-			   score = score - 5 ;
+			   score = score - prix ;
 			   afficheScore();
 			   disabler();
 			   augmenterMultiplicateur();
 			   augmenterValueClick();
 			   afficheMultiTxt();
 			   afficheValueClick();
+			   changePrixMulti();
 			});
 
 
