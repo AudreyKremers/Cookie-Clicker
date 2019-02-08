@@ -29,16 +29,20 @@
 
 		function disabler(){
 
-				if(score>=50){
-					multiplier.removeAttribute("disabled");	
-				}
-				else if(score>=200 && score<=500){
+				if(score>=200 && score<=500){
+					console.log("score entre 200 et 500");
 					autoclicker.removeAttribute("disabled");
 				}
+
+				else if(score>=50){
+					multiplier.removeAttribute("disabled");	
+				}
+				
 				else{
 					multiplier.setAttribute("disabled","true");
 					autoclicker.setAttribute("disabled","true");				
 				}
+
 			}
 
 	//désactive les btn quand score pas assez élevé au début
