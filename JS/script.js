@@ -1,6 +1,6 @@
 (function(){
   
-  	var score = 0;
+  		var score = 0;
 		var valueClick = 1;
 		var multiplicateur = 1;
 		var prix = 50;
@@ -155,13 +155,18 @@
 		bonuser.addEventListener("click", function() {
 			if (score >= 50) {
 				score = score - 50; afficheScore();
+				var multidouble = multiplicateur * 2;
 				multiplicateur = multiplicateur * 2;
 				var counter = 10;
 				var timing = setInterval(function(){
 								   console.log(counter);
 								   counter--;
 								   if(counter == 0){
-										    //multiplicateur = multiplicateur / 2;
+										    var lastmulti = multiplicateur;
+										    var diferens = lastmulti - multidouble;
+										    multiplicateur = (multidouble/2) + diferens;
+										    afficheMultiTxt();
+
 										    afficheValueClick();
 										    clearInterval(timing);
 										    }
