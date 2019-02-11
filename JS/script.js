@@ -40,7 +40,10 @@
 	//fonction qui change le prix pour le doubler au suivant clic sur multiplier et affiche le prix
 
 		function changePrixMulti(){
-				prix = prix * multiplicateur;
+				//prix = prix * multiplicateur;
+				if(multiplicateur>1){
+						     prix = prix + prix;
+						    }
 				var messagePrix = "Prix : " + prix+" cookies";
 				multiPrix.innerHTML = messagePrix;
 				console.log(prix);
@@ -83,7 +86,7 @@
 				multicompter.innerHTML=multexter;
 			}
 
-	//désactive les btn quand score pas assez élevé au début
+	//désactive les btn quand score pas assez élevé au chargement de page
 
 		disablerMulti();
 		disablerAuto();
@@ -125,7 +128,6 @@
 			   disablerAuto();
 			})
 
-/* partie */
 
 
 })();
