@@ -11,6 +11,7 @@
 		var multicompter = document.querySelector("#multicompte");
 		var multiPrix = document.querySelector("#multiplier .prix");
 		var autoclicker = document.querySelector("#autoclicker");
+		var bonuser = document.querySelector("#bonus");
 
 
 		/*console.log("valueClick = "+valueClick+" multiplicateur = "+
@@ -56,7 +57,7 @@
 		function disablerMulti(){
 
 				if(score>prix){
-					console.log("score plus grand que prix");
+					//console.log("score plus grand que prix");
 					multiplier.removeAttribute("disabled");	
 				}
 				
@@ -71,7 +72,7 @@
 		function disablerAuto(){
 
 				if(score>=200 && score<=500){
-					console.log("score entre 200 et 500");
+					//console.log("score entre 200 et 500");
 					autoclicker.removeAttribute("disabled");
 				}
 
@@ -79,6 +80,19 @@
 					autoclicker.setAttribute("disabled","true");				
 				}
 			}
+
+	//Étape 14: désactiver les boutons (pour Bonus)
+
+		function disablerBonus(){
+			
+			if (score >= 50) {
+				bonuser.removeAttribute("disabled");
+
+			} else {
+				bonuser.setAttribute("disabled","true");
+			}
+
+		}
 
 	//fonction qui modifie le texte du span#multicompte du btn multiplier dependant de var multiplicateur
 	//le prochain clic sur le bouton multiplier donnera x clic en plus pour augmenter le score
@@ -92,6 +106,7 @@
 
 		disablerMulti();
 		disablerAuto();
+		disablerBonus();
 
 	//initialise le text du premier bouton multiplier
 
@@ -105,21 +120,6 @@
 
 		afficheValueClick();
 
-	//lors du clic sur le btn, changer la valeur du clic et payer 50 de score, 
-	//afficher le score, désactiver le btn si score trop peu élevé, modifie le texte dans le btn
-	//affiche la nouvelle valeur du clic change le prix du bouton suivant
-
-		multiplier.addEventListener("click", function() {
-			   score = score - prix ;
-			   afficheScore();
-			   disablerMulti();
-			   disablerAuto();
-			   augmenterMultiplicateur();
-			   afficheMultiTxt();
-			   afficheValueClick();
-			   changePrixMulti();
-			});
-
 
 	//lors du click sur le bouton click : change le score, l'affiche et check la possibilité d'activer ou non les autres btn
 
@@ -128,37 +128,50 @@
 			   afficheScore(); 
 			   disablerMulti();
 			   disablerAuto();
-			})
+			   disablerBonus();
+			});
 
-	//Étape 14: désactiver les boutons (pour Bonus)
+	//lors du clic sur le btn, changer la valeur du clic et payer 50 de score, 
+	//afficher le score, désactiver le btn si score trop peu élevé, modifie le texte dans le btn
+	//affiche la nouvelle valeur du clic change le prix du bouton suivant
 
-	function disablerBonus(){
-		if (score >= 50) {
-			document.getElementById("bonus").removeAttribute("disabled");
+		multiplier.addEventListener("click", function() {
+			   score = score - prix ;
+			   afficheScore();
 
-		} else {
-			document.getElementById("bonus").setAttribute("disabled","true");
-		}
+			   disablerMulti();
+			   disablerAuto();
+			   disablerBonus();
 
-	}
+			   augmenterMultiplicateur();
+			   afficheMultiTxt();
+			   afficheValueClick();
+			   changePrixMulti();
+			});
 
-	// Étape 13: achat d'un bonus
 
-	document.getElementById("bonus").addEventListener("click", function() {
-		if (score >= 50) {
-			score = score - 50; afficheScore();
-			valueClick = valueClick * 2;
-			var counter = 10;
-			var timing = setInterval(function(){
-				console.log(counter);
-				counter--;
-				if(counter == 0){
-					valueClick = valueClick / 2;
-	        	clearInterval(timing);
-	        	}
-	    	}, 1000);
-		}
-    });
-    disablerBonus();
+/* partie 13 achat d'un bonus*/
+
+		bonuser.addEventListener("click", function() {
+			if (score >= 50) {
+				score = score - 50; afficheScore();
+				multiplicateur = multiplicateur * 2;
+				var counter = 10;
+				var timing = setInterval(function(){
+								   console.log(counter);
+								   counter--;
+								   if(counter == 0){
+										    //multiplicateur = multiplicateur / 2;
+										    afficheValueClick();
+										    clearInterval(timing);
+										    }
+		    						   }, 1000);
+			}
+			disablerMulti();
+			disablerAuto();
+			disablerBonus();
+			afficheValueClick();
+    		});
+    
 
 })();
