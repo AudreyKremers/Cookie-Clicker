@@ -108,6 +108,7 @@
 			   score = score - prix ;
 			   afficheScore();
 			   disablerMulti();
+			   disablerAuto();
 			   augmenterMultiplicateur();
 			   afficheMultiTxt();
 			   afficheValueClick();
