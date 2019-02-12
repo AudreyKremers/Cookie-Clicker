@@ -3,16 +3,19 @@
   		var score = 0;
 		var valueClick = 1;
 		var multiplicateur = 1;
-		var prix = 50;
+		var multiPrix = 50;
+		var bonusPrix = 50;
 		var scorer = document.querySelector("#score");
 		var clicker = document.querySelector("#click");
 		var valueCliquer = document.querySelector("#clickValue span");
 		var multiplier = document.querySelector("#multiplier");
 		var multicompter = document.querySelector("#multicompte");
-		var multiPrix = document.querySelector("#multiplier .prix");
+		var multiplierPrix = document.querySelector("#multiplier .prix");
+		var bonuserPrix = document.querySelector("#bonus .prix");
 		var autoclicker = document.querySelector("#autoclicker");
 		var bonuser = document.querySelector("#bonus");
 		var counter = 10;
+		var bonusClick = 0;
 
 
 		/*console.log("valueClick = "+valueClick+" multiplicateur = "+
@@ -44,21 +47,28 @@
 	//fonction qui change le prix pour le doubler au suivant clic sur multiplier et affiche le prix
 
 		function changePrixMulti(){
-				//prix = prix * multiplicateur;
+				//multiPrix = multiPrix * multiplicateur;
 				if(multiplicateur>1){
-						     prix = prix + prix;
+						     multiPrix = multiPrix + multiPrix;
 						    }
-				var messagePrix = "Prix : " + prix+" cookies";
-				multiPrix.innerHTML = messagePrix;
-				console.log(prix);
+				var messagePrix = "Prix : " + multiPrix+" cookies";
+				multiplierPrix.innerHTML = messagePrix;
+				console.log(multiPrix);
+			}
+	
+	// fonction qui affiche le prix du bouton bonus
+		
+		function afficheBonusPrix(){
+			bonuserPrix.innerHTML = "Prix : " + bonusPrix +" cookies";
+
 			}
 	
 	//fonction pour désactiver un bouton multiplier avec l'attribut disabled
 
 		function disablerMulti(){
 
-				if(score>prix){
-					//console.log("score plus grand que prix");
+				if(score>multiPrix){
+					//console.log("score plus grand que prix du multiplier");
 					multiplier.removeAttribute("disabled");	
 				}
 				
@@ -86,7 +96,7 @@
 
 		function disablerBonus(){
 
-			if(score >= 50 && counter === 10){
+			if(score >= 50 && counter === 10 && bonusClick === 0){
 				bonuser.removeAttribute("disabled");
 				}
 			else {
@@ -114,9 +124,10 @@
 
 		afficheMultiTxt();
 
-	//initialise le prix du premier bouton multiplier
+	//initialise le prix du premier bouton multiplier et du bonus
 
 		changePrixMulti();
+		afficheBonusPrix();
 
 	//initialise le texte d'affichage de la valeur du clic
 
@@ -138,7 +149,7 @@
 	//affiche la nouvelle valeur du clic change le prix du bouton suivant
 
 		multiplier.addEventListener("click", function() {
-			   score = score - prix ;
+			   score = score - multiPrix ;
 			   afficheScore();
 
 			   disablerMulti();
@@ -155,12 +166,13 @@
 /* partie 13 achat d'un bonus*/
 
 		bonuser.addEventListener("click", function() {
-
+			bonusClick ++;
 			
 			score = score - 50; afficheScore();
 
 			var multidouble = multiplicateur * 2;
 			multiplicateur = multiplicateur * 2;
+			afficheMultiTxt();
 			
 			var timing = setInterval(function(){
 							console.log(counter);
@@ -173,6 +185,8 @@
 									afficheMultiTxt();
 									afficheValueClick();
 									counter = 10;
+									disablerBonus();
+									bonusClick=0;
 									clearInterval(timing);
 									}
 		    					}, 1000);
