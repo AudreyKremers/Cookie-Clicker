@@ -12,6 +12,7 @@
 		var multiPrix = document.querySelector("#multiplier .prix");
 		var autoclicker = document.querySelector("#autoclicker");
 		var bonuser = document.querySelector("#bonus");
+		var counter = 10;
 
 
 		/*console.log("valueClick = "+valueClick+" multiplicateur = "+
@@ -84,12 +85,13 @@
 	//Étape 14: désactiver les boutons (pour Bonus)
 
 		function disablerBonus(){
-			
-			if (score >= 50) {
-				bonuser.removeAttribute("disabled");
 
-			} else {
+			if(score >= 50 && counter === 10){
+				bonuser.removeAttribute("disabled");
+				}
+			else {
 				bonuser.setAttribute("disabled","true");
+				//console.log("disable ok");
 			}
 
 		}
@@ -153,25 +155,28 @@
 /* partie 13 achat d'un bonus*/
 
 		bonuser.addEventListener("click", function() {
-			if (score >= 50) {
-				score = score - 50; afficheScore();
-				var multidouble = multiplicateur * 2;
-				multiplicateur = multiplicateur * 2;
-				var counter = 10;
-				var timing = setInterval(function(){
-								   console.log(counter);
-								   counter--;
-								   if(counter == 0){
-										    var lastmulti = multiplicateur;
-										    var diferens = lastmulti - multidouble;
-										    multiplicateur = (multidouble/2) + diferens;
-										    afficheMultiTxt();
 
-										    afficheValueClick();
-										    clearInterval(timing);
-										    }
-		    						   }, 1000);
-			}
+			
+			score = score - 50; afficheScore();
+
+			var multidouble = multiplicateur * 2;
+			multiplicateur = multiplicateur * 2;
+			
+			var timing = setInterval(function(){
+							console.log(counter);
+							counter--;
+							if(counter == 0){
+									var lastmulti = multiplicateur;
+									var diferens = lastmulti - multidouble;
+									multiplicateur = (multidouble/2) + diferens;
+
+									afficheMultiTxt();
+									afficheValueClick();
+									counter = 10;
+									clearInterval(timing);
+									}
+		    					}, 1000);
+			
 			disablerMulti();
 			disablerAuto();
 			disablerBonus();
