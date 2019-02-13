@@ -1,7 +1,8 @@
 (function(){
   
-  		var score = 0;
+  	var score = 0;
 		var valueClick = 1;
+    var Score = 1;
 		var multiplicateur = 1;
 		var multiPrix = 50;
 		var bonusPrix = 50;
@@ -16,15 +17,32 @@
 		var bonuser = document.querySelector("#bonus");
 		var counter = 10;
 		var bonusClick = 0;
+    var prixAutoclick = 500;
+    var seconds = 30;
 
 
 		/*console.log("valueClick = "+valueClick+" multiplicateur = "+
 			multiplicateur+" autoclicker = "+autoclicker+"multicompter ="+multicompter);*/
 
+  //autoclick gratuit
+
+  var final = setInterval(function(){
+			if(score >= 200 && score < 500){
+					score+=Score;
+					console.log(score);
+					document.getElementById('score').innerHTML = score;
+			}
+			else if(score >= 500){
+					clearInterval(final);
+			}
+	},1000);
+
+  
+  
 /* partie 3*/
 
 	//fonction qui affiche le score dans le html
-
+  
 		function afficheScore(){ 
 				scorer.innerHTML = score;
 			}
@@ -55,6 +73,33 @@
 				multiplierPrix.innerHTML = messagePrix;
 				console.log(multiPrix);
 			}
+  
+  //achat autoclicker
+  
+  document.getElementById('autoclicker').addEventListener("click",function(){
+			if(score >= prixAutoclick){
+					score-=prixAutoclick;
+					document.getElementById('score').innerHTML = score;
+					prixAutoclick+=500;    
+	function printTimeUntil10() {			
+			seconds--; 
+			console.log("Seconds elapsed: " + seconds);
+			score +=Score;
+			console.log(score);
+			document.getElementById('score').innerHTML = score;
+
+			if (seconds === 0) {
+					console.log("30 seconds has elapsed!")
+					clearInterval(interval); 
+			}
+	}
+
+	var interval = setInterval(printTimeUntil10, 1000);
+	document.getElementsByClassName('nom')[1].innerHTML = "autoclick " + prixAutoclick + " $";
+	
+}
+})
+
 	
 	// fonction qui affiche le prix du bouton bonus
 		
@@ -196,6 +241,4 @@
 			disablerBonus();
 			afficheValueClick();
     		});
-    
-
 })();
