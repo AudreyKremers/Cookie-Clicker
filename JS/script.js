@@ -1,22 +1,22 @@
 (function(){
   
-  	var score = 0;
-		var valueClick = 1;
-    var Score = 1;
-		var multiplicateur = 1;
-		var multiPrix = 50;
-		var bonusPrix = 50;
-		var scorer = document.querySelector("#score");
-		var clicker = document.querySelector("#click");
-		var valueCliquer = document.querySelector("#clickValue span");
-		var multiplier = document.querySelector("#multiplier");
-		var multicompter = document.querySelector("#multicompte");
-		var multiplierPrix = document.querySelector("#multiplier .prix");
-		var bonuserPrix = document.querySelector("#bonus .prix");
-		var autoclicker = document.querySelector("#autoclicker");
-		var bonuser = document.querySelector("#bonus");
-		var counter = 10;
-		var bonusClick = 0;
+    var score = 0;
+    var valueClick = 1;
+    //var Score = 1;
+    var multiplicateur = 1;
+    var multiPrix = 50;
+    var bonusPrix = 50;
+    var scorer = document.querySelector("#score");
+    var clicker = document.querySelector("#click");
+    var valueCliquer = document.querySelector("#clickValue span");
+    var multiplier = document.querySelector("#multiplier");
+    var multicompter = document.querySelector("#multicompte");
+    var multiplierPrix = document.querySelector("#multiplier .prix");
+    var bonuserPrix = document.querySelector("#bonus .prix");
+    var autoclicker = document.querySelector("#autoclicker");
+    var bonuser = document.querySelector("#bonus");
+    var counter = 10;
+    var bonusClick = 0;
     var prixAutoclick = 500;
     var seconds = 30;
 
@@ -28,7 +28,7 @@
 
   var final = setInterval(function(){
 			if(score >= 200 && score < 500){
-					score+=Score;
+					score=score + multiplicateur;
 					console.log(score);
 					document.getElementById('score').innerHTML = score;
 			}
@@ -84,12 +84,13 @@
 	function printTimeUntil10() {			
 			seconds--; 
 			console.log("Seconds elapsed: " + seconds);
-			score +=Score;
+			score +=valueclick;
 			console.log(score);
 			document.getElementById('score').innerHTML = score;
 
 			if (seconds === 0) {
 					console.log("30 seconds has elapsed!")
+					seconds = 30;
 					clearInterval(interval); 
 			}
 	}
@@ -127,7 +128,7 @@
 
 		function disablerAuto(){
 
-				if(score>=200 && score<=500){
+				if(score>=prixAutoclick){
 					//console.log("score entre 200 et 500");
 					autoclicker.removeAttribute("disabled");
 				}
