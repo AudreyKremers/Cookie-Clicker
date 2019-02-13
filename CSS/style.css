@@ -1,6 +1,11 @@
 * {
   box-sizing: border-box;
 }
+
+@keyframes defile {
+			  0% { background-position-y:   0; }
+			100% { background-position-y: 100vw; }
+		}
 /*Html, body*/
 html, body {
   width: 100%;
@@ -12,11 +17,11 @@ html, body {
 
 /*Body*/
 body {
-  background-image: linear-gradient(to right, #F2D272, #FFFFC7, #F2D272, #FFFFC7, #F2D272, #FFFFC7, #F2D272, #F2D272, #FFFFC7, #F2D272, #FFFFC7, #F2D272, #FFFFC7, #F2D272);
+  background-image: url("../IMG/pin.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #40735B;
   text-align: center;
-  font-family: 'Bangers'; Impact; sans-sérif;
-  font-size: 18px;
-  color: #414552;
 }
 /*Fin Body*/
 
@@ -44,31 +49,39 @@ main {
 /*Div Affichage*/
 #affichage {
   display: inline-block;
-  margin: 40px;
-  padding-left: 50px;
-  padding-right: 50px;
+  margin: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 10px;
-  background-color: #414552;
-  color: #FFFFC7;
-  font-size: 22px;
+  background-image: url('../IMG/blackmirror.gif');
+  color: #FFFFFF;
+  text-align: center;
+  font-family: 'Bangers'; Impact; sans-serif;
+  letter-spacing: 2px,
+
 }
 /*Fin Div Affichage*/
 
 /*Span*/
 span {
   display: block;
-  padding: 10px;
+  padding: 5px;
 }
 /* Fin Span*/
 
 /* Section Shop**/
 #shop {
-  height: 100%;
-  max-height: 100%;
-  overflow: auto; zoom:1;
-  background-image: url("C:/Users/User/Desktop/Becode/Projet/Cookie-Clicker/IMG/flying-dollars.png");
-  background-position: center;
-  background-color: #40735B;
+    height: 100%;
+    max-height: 100%;
+    overflow: auto; zoom:1;
+    background-image: url("../IMG/flying-dollars.png");
+    background-position: center;
+    height: 100vh;
+    -webkit-background-size: cover;
+    background-size: cover;
+    animation: defile 25s linear infinite;
 }
 /*Fin Section Shop**/
 
@@ -76,14 +89,15 @@ span {
 button {
   margin-top: 50px;
   margin-bottom: 50px;
-  width: 250px;
+  width: 255px;
   padding: 10px;
+  line-height: 30px;
+  text-align: center;
+  font-family: 'Bangers'; 20px ; Impact; sans-serif;
   letter-spacing: 1px;
-  line-height: 40px;
-  font-family: 'Bangers'; Impact; sans-sérif;
-  font-size: 24px;
-  color: #FFFFC7;
-  background-color: #793E30;
+  font-size: 20px;
+
+  background-image: url('../IMG/silver-background.jpg');
   border-radius: 40px;
   box-shadow: 0 7px #414552;
   cursor: crosshair;
@@ -93,17 +107,12 @@ button {
 button:active {
   background-color: #5E3025;
   box-shadow: 0 4px #414552;
-  transform: translateY(4px);
+  transform: translateY(8px);
 }
 
-.disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-#a {
-  margin-left: -400px;
-  margin-top: 100px;
+#clickposition {
+  margin-left: -365px;
+  margin-top: 30px;
 }
 
 #click {
@@ -111,9 +120,6 @@ button:active {
   margin: 0px;
   width: 0px;
   height: 0px;
-  border-radius: 200px;
-  border-style: 1px solide black;
-  border-width: 0px;
 }
 /*Fin Button*/
 
