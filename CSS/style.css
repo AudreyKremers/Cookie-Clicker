@@ -137,15 +137,15 @@ button#click {
   margin-left: 40%;
   margin-top: -200px;
   animation-name: slide;
-  animation-duration: 3s;
+  animation-duration: 2s;
   position: absolute;
   animation-iteration-count:infinite;
-  animation-delay:120s ;
+  animation-delay:10s ;
   -webkit-animation-name: slide;
   
-  -webkit-animation-duration: 3s;
+  -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
-  -webkit-animation-delay: 120s;
+  -webkit-animation-delay: 10s;
   
   
 
