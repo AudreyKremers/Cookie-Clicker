@@ -269,8 +269,9 @@
 			afficheMultiTxt();
 			var timing = setInterval(function() {
 				console.log(counter);
+				
+				document.getElementById('timebonus').innerHTML = counter;
 				counter--;
-				bonuser.innerHTML = counter;
 				if(counter == 0) {
 					var lastmulti = multiplicateur;
 					var diferens = lastmulti - multidouble;

@@ -132,7 +132,7 @@ button#click {
   box-shadow:none;
 }
 
-
+/*
 #bobonunuss{
   margin-left: 40%;
   margin-top: -200px;
@@ -150,7 +150,9 @@ button#click {
   
 
 }
+*/
 
+/*
 .nomgratuit{
   font-size: 14px;
 }
@@ -161,7 +163,8 @@ button#xxx{
   border-radius: 20px;
   padding-top: 0;
 }
-
+*/
+/*
 @-webkit-keyframes slide{
   0%{
     top:0%;
@@ -196,6 +199,15 @@ button#xxx{
  0%{
    margin-top:-200px;
  }
+ 10%{
+   margin-left:600px;
+ }
+ 20%{
+   margin-top: 200px;
+ }
+ 30%{
+   margin-left:20px;
+ }
  50%{
   margin-top: 200px;
  }
@@ -220,7 +232,7 @@ button#xxx{
    margin-top:-200px;
  }
 }
-
+*/
 /*Fin Button*/
 /* Footer*/
 footer {}
