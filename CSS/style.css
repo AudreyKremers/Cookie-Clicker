@@ -96,7 +96,7 @@ span.nom {
 /*Button*/
 button {
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 5px;
   width: 255px;
   padding: 10px;
   line-height: 30px;
@@ -121,12 +121,15 @@ button:active {
   margin-top: 30px;
 }
 
-#click {
+button#click {
   padding: 0px;
-  margin: 0px;
-  width: 0px;
-  height: 0px;
+  width: 376px;
+  height: 376px;
   cursor: url(../IMG/icons8-tetra-pak-100.png) 10 20, auto;
+  background: none;
+  border: none;
+  margin-left: 30%;
+  box-shadow:none;
 }
 
 /*Fin Button*/

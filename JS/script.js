@@ -14,6 +14,7 @@
     var multiplierPrix = document.querySelector("#multiplier .prix");
     var bonuserPrix = document.querySelector("#bonus .prix");
     var autoclicker = document.querySelector("#autoclicker");
+    var autoclickerPrix = document.querySelector("#autoclicker .prix");
     var bonuser = document.querySelector("#bonus");
     var counter = 10;
     var bonusClick = 0;
@@ -88,7 +89,7 @@
 	//fonction pour désactiver un bouton multiplier avec l'attribut disabled
 
 		function disablerMulti(){
-			if(score>multiPrix){
+			if(score>=multiPrix){
 				//console.log("score plus grand que prix du multiplier");
 				multiplier.removeAttribute("disabled");	
 			}
@@ -183,15 +184,15 @@
 			   score = score - multiPrix ;
 			   afficheScore();
 
+			   augmenterMultiplicateur();
+			   changePrixMulti();
+			   afficheMultiTxt();
+			   afficheValueClick();
+
 			   disablerAuto();
 			   disablerMulti();
 			   disablerBonus();
 			   disablerBonusgratuit();
-
-			   augmenterMultiplicateur();
-			   afficheMultiTxt();
-			   afficheValueClick();
-			   changePrixMulti();
 		});
 
 
@@ -233,7 +234,7 @@
 						}
 					}
 				var interval = setInterval(printTimeUntil10, 1000);
-				document.getElementsByClassName('nom')[1].innerHTML = "autoclick " + prixAutoclick + " $";	
+				autoclickerPrix.innerHTML = "autoclick " + prixAutoclick + " cookies";	
 			}
 				disablerMulti();
 				disablerAuto();
