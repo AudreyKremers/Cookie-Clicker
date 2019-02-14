@@ -26,20 +26,9 @@
 		/*console.log("valueClick = "+valueClick+" multiplicateur = "+
 			multiplicateur+" autoclicker = "+autoclicker+"multicompter ="+multicompter);*/
 
-  //autoclick gratuit
 
-  	var final = setInterval(function() {
-		if(score >= 200 && score < 500) {
-			score=score + multiplicateur;
-			console.log(score);
-			document.getElementById('score').innerHTML = score;
-		}
-		else if(score >= 500) {
-			clearInterval(final);
-		}
-	},1000);
 
-/* partie 3*/
+/*fonction de base pour l'affichage, les multiplications*/
 
 	//fonction qui affiche le score dans le html
   
@@ -53,7 +42,6 @@
 			valueCliquer.innerHTML = multiplicateur;
 		}
 
-/* partie 4, 5, 6, 7, 8 */
 
 	//fonction pour augmenter la valeur de multiplicateur
 
@@ -72,41 +60,26 @@
 			multiplierPrix.innerHTML = messagePrix;
 			console.log(multiPrix);
 		}
-  
-    //achat autoclicker
-  
-    document.getElementById('autoclicker').addEventListener("click",function(){
-		if(score >= prixAutoclick){
-			score-=prixAutoclick;
-			document.getElementById('score').innerHTML = score;
-			prixAutoclick+=500;    
-				function printTimeUntil10() {			
-					seconds--; 
-					console.log("Seconds elapsed: " + seconds);
-					score +=multiplicateur;
-					console.log(score);
-					document.getElementById('score').innerHTML = score;
-					if (seconds === 0) {
-							console.log("30 seconds has elapsed!")
-							seconds = 30;
-							clearInterval(interval); 
-					}
-				}
-			var interval = setInterval(printTimeUntil10, 1000);
-			document.getElementsByClassName('nom')[1].innerHTML = "autoclick " + prixAutoclick + " $";	
-		}
-			disablerMulti();
-			disablerAuto();
-			disablerBonus();
-			afficheValueClick();
-	})
 	
 	// fonction qui affiche le prix du bouton bonus
 		
 		function afficheBonusPrix(){
 			bonuserPrix.innerHTML = "Prix : " + bonusPrix +" cookies";
 			}
-	
+
+
+	//fonction qui modifie le texte du span#multicompte du btn multiplier dependant de var multiplicateur
+	//le prochain clic sur le bouton multiplier donnera x clic en plus pour augmenter le score
+
+		function afficheMultiTxt(){
+				var multexter = "+ "+ (multiplicateur+1) +" par clic";
+				multicompter.innerHTML=multexter;
+		}
+
+
+
+/*fonction d'activation des boutons*/
+
 	//fonction pour désactiver un bouton multiplier avec l'attribut disabled
 
 		function disablerMulti(){
@@ -131,7 +104,7 @@
 			}
 		}
 
-	//Étape 14: désactiver les boutons (pour Bonus)
+	//fonction pour désactiver un bouton bonus avec l'attribut disabled
 
 		function disablerBonus(){
 			if(score >= 50 && counter === 10 && bonusClick === 0){
@@ -143,7 +116,7 @@
 			}
 		}
 
-	//fonction pour désactiver le bouton bonusgratuit
+	//fonction pour désactiver un bouton bonusgratuit avec l'attribut disabled
 
 		function disablerBonusgratuit(){
 			if (score>=bonusgratuitPrix) {
@@ -154,19 +127,16 @@
 			}
 		}
 
-	//fonction qui modifie le texte du span#multicompte du btn multiplier dependant de var multiplicateur
-	//le prochain clic sur le bouton multiplier donnera x clic en plus pour augmenter le score
 
-		function afficheMultiTxt(){
-				var multexter = "+ "+ (multiplicateur+1) +" par clic";
-				multicompter.innerHTML=multexter;
-		}
+
+/* INITIALISATION AU CHARGEMENT DU JEUX */
 
 	//désactive les btn quand score pas assez élevé au chargement de page
 
 		disablerMulti();
 		disablerAuto();
 		disablerBonus();
+		disablerBonusgratuit();
 
 	//initialise le text du premier bouton multiplier
 
@@ -181,6 +151,9 @@
 
 		afficheValueClick();
 
+
+/* COOCKIE CLICKER */
+
 	//lors du click sur le bouton click : change le score, l'affiche et check la possibilité d'activer ou non les autres btn
 
 		clicker.addEventListener("click", function() { 
@@ -189,7 +162,11 @@
 			   disablerMulti();
 			   disablerAuto();
 			   disablerBonus();
+			   disablerBonusgratuit();
 		});
+
+
+/* MULTIPLIER */
 
 	//lors du clic sur le btn, changer la valeur du clic et payer 50 de score, 
 	//afficher le score, désactiver le btn si score trop peu élevé, modifie le texte dans le btn
@@ -202,6 +179,7 @@
 			   disablerAuto();
 			   disablerMulti();
 			   disablerBonus();
+			   disablerBonusgratuit();
 
 			   augmenterMultiplicateur();
 			   afficheMultiTxt();
@@ -209,7 +187,70 @@
 			   changePrixMulti();
 		});
 
-/* partie 13 achat d'un bonus*/
+
+/* AUTOCLICKER */
+
+	//autoclick gratuit des qu'on arrive à 200 et a partir de 200 si on diminue encore le score
+	//setInterval qui s'active quand on arrive à 200 jusqu'à 5OO 
+	//en additionnant le multiplicateur au score toute les secondes
+
+	  	var final = setInterval(function() {
+			if(score >= 200 && score < 500) {
+				score=score + multiplicateur;
+				//console.log(score);
+				afficheScore();
+			}
+			else if(score >= 500) {
+				clearInterval(final);
+			}
+		},1000);
+
+
+  
+	    	autoclicker.addEventListener("click",function(){
+			if(score >= prixAutoclick){
+				score-=prixAutoclick;
+				afficheScore();
+				prixAutoclick+=500;    
+					function printTimeUntil10() {			
+						seconds--; 
+						//console.log("Seconds elapsed: " + seconds);
+						score +=multiplicateur;
+						//console.log(score);
+						afficheScore();
+						if (seconds === 0) {
+								console.log("30 seconds has elapsed!")
+								seconds = 30;
+								clearInterval(interval); 
+						}
+					}
+				var interval = setInterval(printTimeUntil10, 1000);
+				document.getElementsByClassName('nom')[1].innerHTML = "autoclick " + prixAutoclick + " $";	
+			}
+				disablerMulti();
+				disablerAuto();
+				disablerBonus();
+				disablerBonusgratuit();
+
+				afficheValueClick();
+		});
+
+
+/* BONUS */
+
+	//Lors du clic sur bonus, ajoute au décompte du nombre de clic sur ce bouton
+	//modifie le score en soustrayant le prix du bonus
+
+	//on multipliera le nombre de clic par deux mais il faut retenir la valeur initiale
+	//car la valeur du multiplicateur peut changer si on clic sur multiplier durant le bonus
+	//on modifie le texte du bouton multiplier le temps que dure le bonus
+	//chaque seconde tant que counter n'est pas egal à zero le bonus est actif
+
+	//quand couter = 0 on calcule le bon multiplicateur avec la difference obtenue lors des clics sur multiplier
+	//on modifie le texte du bouton multiplier
+	//on modifie l'affichage de la valeur de clic
+	//on empechait de cliquer sur le bouton avec la valeur de bonusclic, on la remet à zero
+	//on annule le timer, on verifie l'activation de tous les boutons, on affiche la derniere valeur de clic
 
 		bonuser.addEventListener("click", function() {
 			bonusClick ++;
@@ -235,8 +276,14 @@
 			disablerMulti();
 			disablerAuto();
 			disablerBonus();
+			disablerBonusgratuit();
+
 			afficheValueClick();
-    	});
+    		});
+
+
+/* BONUS GRATUIT */
+
     	bonusergratuit.addEventListener("click", function() {
 			score = score + random;
 			afficheScore();
@@ -252,6 +299,8 @@
 			disablerMulti();
 			disablerAuto();
 			disablerBonus();
+			disablerBonusgratuit();
+
 			afficheValueClick();
 		});
 
