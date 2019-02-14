@@ -19,20 +19,24 @@
     var bonusClick = 0;
     var prixAutoclick = 500;
     var seconds = 30;
+    var bonusgratuitPrix = 8000;
+    var bonusergratuit = document.querySelector("#bonusgratuit");
+    var random = Math.floor((Math.random()*2000)+500);
 
 		/*console.log("valueClick = "+valueClick+" multiplicateur = "+
 			multiplicateur+" autoclicker = "+autoclicker+"multicompter ="+multicompter);*/
+
   //autoclick gratuit
 
-  var final = setInterval(function(){
-			if(score >= 200 && score < 500){
-					score=score + multiplicateur;
-					console.log(score);
-					document.getElementById('score').innerHTML = score;
-			}
-			else if(score >= 500){
-					clearInterval(final);
-			}
+  	var final = setInterval(function() {
+		if(score >= 200 && score < 500) {
+			score=score + multiplicateur;
+			console.log(score);
+			document.getElementById('score').innerHTML = score;
+		}
+		else if(score >= 500) {
+			clearInterval(final);
+		}
 	},1000);
 
 /* partie 3*/
@@ -40,64 +44,62 @@
 	//fonction qui affiche le score dans le html
 
 		function afficheScore(){
-				scorer.innerHTML = score;
-			}
+			scorer.innerHTML = score;
+		}
 
 	//fonction qui affiche la valeur du clic en dessous du score dans le html
 
 		function afficheValueClick(){
-				valueCliquer.innerHTML = multiplicateur;
-			}
+			valueCliquer.innerHTML = multiplicateur;
+		}
 
 /* partie 4, 5, 6, 7, 8 */
 
 	//fonction pour augmenter la valeur de multiplicateur
 
 		function augmenterMultiplicateur(){
-				multiplicateur += 1;
-			}
+			multiplicateur = multiplicateur + 1;
+		}
 
 	//fonction qui change le prix pour le doubler au suivant clic sur multiplier et affiche le prix
 
 		function changePrixMulti(){
-				//multiPrix = multiPrix * multiplicateur;
-				if(multiplicateur>1){
-						     multiPrix = multiPrix + multiPrix;
-						    }
-				var messagePrix = "Prix : " + multiPrix+" cookies";
-				multiplierPrix.innerHTML = messagePrix;
-				console.log(multiPrix);
-			}
-
-  //achat autoclicker
-
-  document.getElementById('autoclicker').addEventListener("click",function(){
-			if(score >= prixAutoclick){
-					score-=prixAutoclick;
-					document.getElementById('score').innerHTML = score;
-					prixAutoclick+=500;
-	function printTimeUntil10() {
-		seconds--;
-		console.log("Seconds elapsed: " + seconds);
-		score +=multiplicateur;
-		console.log(score);
-		document.getElementById('score').innerHTML = score;
-
-		if (seconds === 0) {
-				console.log("30 seconds has elapsed!")
-				seconds = 30;
-				clearInterval(interval);
+			//multiPrix = multiPrix * multiplicateur;
+			if(multiplicateur>1){
+			    multiPrix = multiPrix + multiPrix;
+		    }
+			var messagePrix = "Prix : " + multiPrix+" cookies";
+			multiplierPrix.innerHTML = messagePrix;
+			console.log(multiPrix);
 		}
-	}
 
-	var interval = setInterval(printTimeUntil10, 1000);
-	document.getElementsByClassName('nom')[1].innerHTML = "autoclick " + prixAutoclick + " $";
-	}
+    //achat autoclicker
+
+    document.getElementById('autoclicker').addEventListener("click",function(){
+		if(score >= prixAutoclick){
+			score-=prixAutoclick;
+			document.getElementById('score').innerHTML = score;
+			prixAutoclick+=500;
+				function printTimeUntil10() {
+					seconds--;
+					console.log("Seconds elapsed: " + seconds);
+					score +=multiplicateur;
+					console.log(score);
+					document.getElementById('score').innerHTML = score;
+					if (seconds === 0) {
+							console.log("30 seconds has elapsed!")
+							seconds = 30;
+							clearInterval(interval);
+					}
+				}
+			var interval = setInterval(printTimeUntil10, 1000);
+			document.getElementsByClassName('nom')[1].innerHTML = "autoclick " + prixAutoclick + " $";
+		}
 			disablerMulti();
 			disablerAuto();
 			disablerBonus();
 			afficheValueClick();
-})
+	})
 
 	// fonction qui affiche le prix du bouton bonus
 
@@ -108,41 +110,47 @@
 	//fonction pour désactiver un bouton multiplier avec l'attribut disabled
 
 		function disablerMulti(){
-
-				if(score>=multiPrix){
-					//console.log("score plus grand que prix du multiplier");
-					multiplier.removeAttribute("disabled");
-				}
-
-				else{
-					multiplier.setAttribute("disabled","true");
-				}
+			if(score>multiPrix){
+				//console.log("score plus grand que prix du multiplier");
+				multiplier.removeAttribute("disabled");
 			}
+			else{
+				multiplier.setAttribute("disabled","true");
+			}
+		}
 
 	//fonction pour désactiver un bouton autoclick avec l'attribut disabled
 
 		function disablerAuto(){
-
-				if(score>=prixAutoclick){
-					//console.log("score entre 200 et 500");
-					autoclicker.removeAttribute("disabled");
-				}
-
-				else{
-					autoclicker.setAttribute("disabled","true");
-				}
+			if(score>=prixAutoclick){
+				//console.log("score entre 200 et 500");
+				autoclicker.removeAttribute("disabled");
 			}
+			else{
+				autoclicker.setAttribute("disabled","true");
+			}
+		}
 
 	//Étape 14: désactiver les boutons (pour Bonus)
 
 		function disablerBonus(){
-
 			if(score >= 50 && counter === 10 && bonusClick === 0){
 				bonuser.removeAttribute("disabled");
-				}
+			}
 			else {
 				bonuser.setAttribute("disabled","true");
 				//console.log("disable ok");
+			}
+		}
+
+	//fonction pour désactiver le bouton bonusgratuit
+
+		function disablerBonusgratuit(){
+			if (score>=bonusgratuitPrix) {
+				bonusergratuit.removeAttribute("disabled");
+			}
+			else {
+				bonusergratuit.setAttribute("disabled","true");
 			}
 		}
 
@@ -152,7 +160,7 @@
 		function afficheMultiTxt(){
 				var multexter = "+ "+ (multiplicateur+1) +" par clic";
 				multicompter.innerHTML=multexter;
-			}
+		}
 
 	//désactive les btn quand score pas assez élevé au chargement de page
 
@@ -181,7 +189,7 @@
 			   disablerMulti();
 			   disablerAuto();
 			   disablerBonus();
-			});
+		});
 
 	//lors du clic sur le btn, changer la valeur du clic et payer 50 de score,
 	//afficher le score, désactiver le btn si score trop peu élevé, modifie le texte dans le btn
@@ -199,7 +207,7 @@
 			   afficheMultiTxt();
 			   afficheValueClick();
 			   changePrixMulti();
-			});
+		});
 
 /* partie 13 achat d'un bonus*/
 
@@ -209,24 +217,57 @@
 			var multidouble = multiplicateur * 2;
 			multiplicateur = multiplicateur * 2;
 			afficheMultiTxt();
-			var timing = setInterval(function(){
-							console.log(counter);
-							counter--;
-							if(counter == 0){
-									var lastmulti = multiplicateur;
-									var diferens = lastmulti - multidouble;
-									multiplicateur = (multidouble/2) + diferens;
-									afficheMultiTxt();
-									afficheValueClick();
-									counter = 10;
-									disablerBonus();
-									bonusClick=0;
-									clearInterval(timing);
-									}
-		    					}, 1000);
+			var timing = setInterval(function() {
+				console.log(counter);
+				counter--;
+				if(counter == 0) {
+					var lastmulti = multiplicateur;
+					var diferens = lastmulti - multidouble;
+					multiplicateur = (multidouble/2) + diferens;
+					afficheMultiTxt();
+					afficheValueClick();
+					counter = 10;
+					disablerBonus();
+					bonusClick=0;
+					clearInterval(timing);
+				}
+		   	}, 1000);
 			disablerMulti();
 			disablerAuto();
 			disablerBonus();
 			afficheValueClick();
-    		});
+    	});
+    	bonusergratuit.addEventListener("click", function() {
+			score = score + random;
+			afficheScore();
+			var timing = setInterval(function() {
+				console.log(counter);
+				counter--;
+				if(counter == 0) {
+					counter = 10;
+					disablerBonusgratuit();
+					clearInterval(timing);
+				}
+		   	}, 1000);
+			disablerMulti();
+			disablerAuto();
+			disablerBonus();
+			afficheValueClick();
+		});
+
+            /*function bonusbonus(){
+                counter--;
+                console.log(counter);
+                if(bonusergratuit.addEventListener("click",function(){
+                    console.log("dddddddddddddddddddd");
+                    score+=random;
+                    document.getElementsByClassName('bonusgratuit').innerHTML = score;
+                    bonusgratuit.removeAttribute("disabled");
+                    counter = 10;
+                }
+                else if(counter == 0){
+                    clearInterval(bonusbonus);
+                    counter = 10;
+                 }
+            };*/
 })();

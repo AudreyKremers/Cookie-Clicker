@@ -18,7 +18,6 @@ html, body {
 /*Body*/
 body {
   background-image: url("../IMG/pin.jpg");
-  background-repeat: no-repeat;
   background-size: cover;
   background-color: #40735B;
   text-align: center;
@@ -42,7 +41,6 @@ main {
   height: auto;
   float: left;
   width: 50%;
-  clear: inherit;
 }
 /*Fin Section Cookie */
 
@@ -50,16 +48,17 @@ main {
 #affichage {
   display: inline-block;
   margin: 30px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-radius: 10px;
   background-image: url('../IMG/blackmirror.gif');
   color: #FFFFFF;
   text-align: center;
   font-family: 'Bangers'; Impact; sans-serif;
-  letter-spacing: 2px,
+  letter-spacing: 2px;
+  font-size: 20px;
 
 }
 /*Fin Div Affichage*/
@@ -67,10 +66,13 @@ main {
 /*Span*/
 span {
   display: block;
-  padding: 5px;
+  font-size: 22px;
 }
 /* Fin Span*/
-
+span.nom {
+  font-size: 26px;
+  letter-spacing: 3px;
+}
 /* Section Shop**/
 #shop {
     height: 100%;
@@ -96,16 +98,15 @@ button {
   font-family: 'Bangers'; 20px ; Impact; sans-serif;
   letter-spacing: 1px;
   font-size: 20px;
-
   background-image: url('../IMG/silver-background.jpg');
   border-radius: 40px;
   box-shadow: 0 7px #414552;
-  cursor: crosshair;
   outline: none;
+  cursor: url(../IMG/icons8-shopping-bag-100.png)10 20, auto;
 }
 
 button:active {
-  background-color: #5E3025;
+
   box-shadow: 0 4px #414552;
   transform: translateY(8px);
 }
@@ -120,6 +121,7 @@ button:active {
   margin: 0px;
   width: 0px;
   height: 0px;
+  cursor: url(../IMG/icons8-tetra-pak-100.png) 10 20, auto;
 }
 /*Fin Button*/
 
