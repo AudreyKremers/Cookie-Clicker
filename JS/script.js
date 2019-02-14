@@ -270,6 +270,7 @@
 			var timing = setInterval(function() {
 				console.log(counter);
 				counter--;
+				bonuser.innerHTML = counter;
 				if(counter == 0) {
 					var lastmulti = multiplicateur;
 					var diferens = lastmulti - multidouble;
