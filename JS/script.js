@@ -76,6 +76,11 @@
 				multicompter.innerHTML=multexter;
 		}
 
+	// fonction qui affiche le prix du bouton autoclick
+
+		function afficheAutoPrix(){
+			autoclickerPrix.innerHTML = "prix : " + prixAutoclick + " cookies";
+		}
 
 
 /*fonction d'activation des boutons*/
@@ -139,8 +144,10 @@
 		disablerBonusgratuit();
 
 	//initialise le text du premier bouton multiplier
+	//initialise le premier autoclick
 
 		afficheMultiTxt();
+		afficheAutoPrix();
 
 	//initialise le prix du premier bouton multiplier et du bonus
 
@@ -211,7 +218,8 @@
 			if(score >= prixAutoclick){
 				score-=prixAutoclick;
 				afficheScore();
-				prixAutoclick+=500;    
+				prixAutoclick+=500;
+				afficheAutoPrix();  
 					function printTimeUntil10() {			
 						seconds--; 
 						//console.log("Seconds elapsed: " + seconds);
