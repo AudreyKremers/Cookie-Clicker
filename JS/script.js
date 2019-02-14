@@ -316,12 +316,12 @@
 
 	
 
-	/*	document.getElementById('bobonunuss').addEventListener("click",function(){
+		document.getElementById('bobonunuss').addEventListener("click",function(){
 		score+=random;
 		console.log(score);
 		document.getElementById('score').innerHTML = score;
 	});
-	*/
+	
 	
 
             /*function bonusbonus(){
