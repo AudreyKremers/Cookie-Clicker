@@ -1,24 +1,137 @@
-/*Header**/
-header {
-
+* {
+  box-sizing: border-box;
 }
-/*Fin Header**/
 
-/*Section Cookie **/
+@keyframes defile {
+  0% {
+    background-position-y: 0;
+  }
+
+  100% {
+    background-position-y: 100vw;
+  }
+}
+
+/*Html, body*/
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*Fin Html, Body*/
+/*Body*/
+body {
+  background-image: url("../IMG/pin.jpg");
+  background-size: cover;
+  background-color: #40735B;
+  text-align: center;
+}
+
+/*Fin Body*/
+/*Header*/
+header {}
+
+/*Fin Header*/
+/*Main*/
+main {
+  height: 100%;
+}
+
+/*Fin Main*/
+/*Section Cookie */
 #cookie {
-
+  height: auto;
+  float: left;
+  width: 50%;
 }
-/*Fin Section Cookie **/
+
+/*Fin Section Cookie */
+/*Div Affichage*/
+#affichage {
+  display: inline-block;
+  margin: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  background-image: url('../IMG/blackmirror.gif');
+  color: #FFFFFF;
+  text-align: center;
+  font-family: 'Bangers', Impact, sans-serif;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
+/*Fin Div Affichage*/
+/*Span*/
+span {
+  display: block;
+  font-size: 22px;
+}
+
+/* Fin Span*/
+span.nom {
+  font-size: 26px;
+  letter-spacing: 3px;
+}
 
 /* Section Shop**/
 #shop {
-
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  zoom: 1;
+  background-image: url("../IMG/flying-dollars.png");
+  background-position: center;
+  height: 100vh;
+  -webkit-background-size: cover;
+  background-size: cover;
+  animation: defile 25s linear infinite;
 }
+
 /*Fin Section Shop**/
-
-/* Footer**/
-footer {
-
+/*Button*/
+button {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 255px;
+  padding: 10px;
+  line-height: 30px;
+  text-align: center;
+  font-family: 'Bangers', Impact, sans-serif;
+  letter-spacing: 1px;
+  font-size: 20px;
+  background-image: url('../IMG/silver-background.jpg');
+  border-radius: 40px;
+  box-shadow: 0 7px #414552;
+  outline: none;
+  cursor: url(../IMG/icons8-shopping-bag-100.png)10 20, auto;
 }
 
-/*Fin Footer**/
+button:active {
+  box-shadow: 0 4px #414552;
+  transform: translateY(8px);
+}
+
+#clickposition {
+  margin-left: -365px;
+  margin-top: 30px;
+}
+
+#click {
+  padding: 0px;
+  margin: 0px;
+  width: 0px;
+  height: 0px;
+  cursor: url(../IMG/icons8-tetra-pak-100.png) 10 20, auto;
+}
+
+/*Fin Button*/
+/* Footer*/
+footer {}
+
+/*Fin Footer*/
+
