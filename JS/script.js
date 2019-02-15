@@ -2,7 +2,6 @@
   
     var score = 0;
     var valueClick = 1;
-    //var Score = 1;
     var multiplicateur = 1;
     var multiPrix = 50;
     var bonusPrix = 50;
@@ -20,12 +19,12 @@
     var bonusClick = 0;
     var prixAutoclick = 500;
     var seconds = 30;
+    var myTime=document.querySelector("#timebonus");
+    var timerBox= document.querySelector("#timeebonus");
+    /*var Score = 1;
     var bonusgratuitPrix = 8000;
     var bonusergratuit = document.querySelector("#bonusgratuit");
-    var random = Math.floor((Math.random()*2000)+500);
-
-		/*console.log("valueClick = "+valueClick+" multiplicateur = "+
-			multiplicateur+" autoclicker = "+autoclicker+"multicompter ="+multicompter);*/
+    var random = Math.floor((Math.random()*2000)+500);*/
 
 
 
@@ -59,7 +58,6 @@
 		    }
 			var messagePrix = "Prix : " + multiPrix+" cookies";
 			multiplierPrix.innerHTML = messagePrix;
-			console.log(multiPrix);
 		}
 	
 	// fonction qui affiche le prix du bouton bonus
@@ -90,7 +88,6 @@
 
 		function disablerMulti(){
 			if(score>=multiPrix){
-				//console.log("score plus grand que prix du multiplier");
 				multiplier.removeAttribute("disabled");	
 			}
 			else{		
@@ -102,7 +99,6 @@
 
 		function disablerAuto(){
 			if(score>=prixAutoclick){
-				//console.log("score entre 200 et 500");
 				autoclicker.removeAttribute("disabled");
 			}
 			else{
@@ -118,12 +114,11 @@
 			}
 			else {
 				bonuser.setAttribute("disabled","true");
-				//console.log("disable ok");
 			}
 		}
 
 	//fonction pour désactiver un bouton bonusgratuit avec l'attribut disabled
-
+	/*
 		function disablerBonusgratuit(){
 			if (score>=bonusgratuitPrix) {
 				bonusergratuit.removeAttribute("disabled");
@@ -132,7 +127,7 @@
 				bonusergratuit.setAttribute("disabled","true");
 			}
 		}
-
+	*/
 
 
 /* INITIALISATION AU CHARGEMENT DU JEUX */
@@ -142,7 +137,7 @@
 		disablerMulti();
 		disablerAuto();
 		disablerBonus();
-		disablerBonusgratuit();
+		//disablerBonusgratuit();
 
 	//initialise le text du premier bouton multiplier
 	//initialise le premier autoclick
@@ -170,7 +165,7 @@
 			   disablerMulti();
 			   disablerAuto();
 			   disablerBonus();
-			   disablerBonusgratuit();
+			   //disablerBonusgratuit();
 		});
 
 
@@ -192,7 +187,7 @@
 			   disablerAuto();
 			   disablerMulti();
 			   disablerBonus();
-			   disablerBonusgratuit();
+			   //disablerBonusgratuit();
 		});
 
 
@@ -205,7 +200,6 @@
 	  	var final = setInterval(function() {
 			if(score >= 200 && score < 500) {
 				score=score + multiplicateur;
-				//console.log(score);
 				afficheScore();
 			}
 			else if(score >= 500) {
@@ -223,9 +217,7 @@
 				afficheAutoPrix();  
 					function printTimeUntil10() {			
 						seconds--; 
-						//console.log("Seconds elapsed: " + seconds);
 						score +=multiplicateur;
-						//console.log(score);
 						afficheScore();
 						if (seconds === 0) {
 								console.log("30 seconds has elapsed!")
@@ -239,7 +231,7 @@
 				disablerMulti();
 				disablerAuto();
 				disablerBonus();
-				disablerBonusgratuit();
+				//disablerBonusgratuit();
 
 				afficheValueClick();
 		});
@@ -267,17 +259,21 @@
 			var multidouble = multiplicateur * 2;
 			multiplicateur = multiplicateur * 2;
 			afficheMultiTxt();
+			timerBox.style.backgroundColor = "green";
 			var timing = setInterval(function() {
-				console.log(counter);
-				
-				document.getElementById('timebonus').innerHTML = counter;
+				//console.log(counter);
 				counter--;
+				myTime.innerHTML = counter;
+
 				if(counter == 0) {
 					var lastmulti = multiplicateur;
 					var diferens = lastmulti - multidouble;
 					multiplicateur = (multidouble/2) + diferens;
 					afficheMultiTxt();
 					afficheValueClick();
+					myTime.innerHTML = counter;
+				
+					timerBox.style.backgroundColor = "gray";
 					counter = 10;
 					disablerBonus();
 					bonusClick=0;
@@ -287,13 +283,13 @@
 			disablerMulti();
 			disablerAuto();
 			disablerBonus();
-			disablerBonusgratuit();
+			//disablerBonusgratuit();
 
 			afficheValueClick();
     		});
 
 
-/* BONUS GRATUIT */
+/* BONUS GRATUIT autres tests*/
 
     	/*bonusergratuit.addEventListener("click", function() {
 			score = score + random;
@@ -303,29 +299,29 @@
 				counter--;
 				if(counter == 0) {
 					counter = 10;
-					disablerBonusgratuit();
+					//disablerBonusgratuit();
 					clearInterval(timing);
 				}
 		   	}, 1000);
 			disablerMulti();
 			disablerAuto();
 			disablerBonus();
-			disablerBonusgratuit();
+			//disablerBonusgratuit();
 
 			afficheValueClick();
-		});*/
+		});
 
 	
 
 		document.getElementById('bobonunuss').addEventListener("click",function(){
-		score+=random;
-		console.log(score);
-		document.getElementById('score').innerHTML = score;
-	});
+			score+=random;
+			console.log(score);
+			document.getElementById('score').innerHTML = score;
+		});
 	
 	
 
-            /*function bonusbonus(){
+            function bonusbonus(){
                 counter--;
                 console.log(counter);
                 if(bonusergratuit.addEventListener("click",function(){
