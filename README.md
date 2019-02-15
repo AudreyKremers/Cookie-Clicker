@@ -13,6 +13,7 @@ _Languages utilisés :_
 * JavaScript  
 
 Notre jeu peut être [testé ici](https://pablomombo.github.io/Cookie-Clicker/)  
+analyse [lightHouse](https://pablomombo.github.io/Cookie-Clicker/coockie-clicker_Lighthouse-Report.pdf)    
 
 Exercice détaillé [ici](https://github.com/becodeorg/BXL-Johnson-3.9/tree/master/Projets/coockie-clicker)   
    
